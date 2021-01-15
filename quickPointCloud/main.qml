@@ -12,83 +12,57 @@ ApplicationWindow {
     visible: true
     title: qsTr("Stack")
 
+    View3D {
+        anchors.fill: parent
+        environment: SceneEnvironment {
+            lightProbe: Texture{
+                source: "imageTesto.hdr"
+            }
+            backgroundMode: SceneEnvironment.SkyBox
+        }
+
+        PerspectiveCamera {
+            id: camera
+            z: 300
+        }
+
+        DirectionalLight {
+            eulerRotation.x: -30
+        }
+
+        Model {
+            geometry: CustomGeometry{
+                name: "mypointcloud"
+                count: 10000000
+            }
+            materials: PrincipledMaterial{}
+        }
+    }
+
 //    View3D {
 //        anchors.fill: parent
-//        environment: SceneEnvironment {
-//            lightProbe: Texture{
-//                source: "imageTesto.hdr"
-//            }
-//            backgroundMode: SceneEnvironment.SkyBox
-//        }
+//        camera: camera
 
 //        PerspectiveCamera {
 //            id: camera
-//            z: 300
+//            position: Qt.vector3d(0, 0, 600)
 //        }
 
 //        DirectionalLight {
-//            eulerRotation.x: -30
+//            position: Qt.vector3d(-500, 500, -100)
+//            color: Qt.rgba(0.4, 0.2, 0.6, 1.0)
+//            ambientColor: Qt.rgba(0.1, 0.1, 0.1, 1.0)
 //        }
 
-////        Model {
-////           source: "#Cube"
-////            materials: DefaultMaterial {}
-////            eulerRotation.y: 20
-////        }
-
 //        Model {
-////            source: "#Cube"
-////            geometry: CustomGeometry{
-////                count: 300000
-////            }
-//            //scale: Qt.vector3d(100, 100, 100)
+//            scale: Qt.vector3d(100, 100, 100)
 //            geometry: GridGeometry {
 //                horizontalLines: 20
 //                verticalLines: 20
 //            }
-
-//            materials: DefaultMaterial {}
-//            eulerRotation.y: 20
-////            //isWireframeMode: true
-
-////            Node {
-////                // Empty spatial Node to give 2D item
-////                // a position in 3D space
-////                y: 100
-////                Text {
-////                    // 2D content in 3D
-////                    anchors.centerIn: parent
-////                    text: "Cube Label"
-////                    color: "white"
-////                }
-////            }
+//            materials: [ DefaultMaterial { } ]
 //        }
 //    }
-
-    View3D {
-        anchors.fill: parent
-        camera: camera
-
-        PerspectiveCamera {
-            id: camera
-            position: Qt.vector3d(0, 0, 600)
-        }
-
-        DirectionalLight {
-            position: Qt.vector3d(-500, 500, -100)
-            color: Qt.rgba(0.4, 0.2, 0.6, 1.0)
-            ambientColor: Qt.rgba(0.1, 0.1, 0.1, 1.0)
-        }
-
-        Model {
-            scale: Qt.vector3d(100, 100, 100)
-            geometry: GridGeometry {
-                horizontalLines: 20
-                verticalLines: 20
-            }
-            materials: [ DefaultMaterial { } ]
-        }
-    }
 
     WasdController{
         controlledObject: camera
