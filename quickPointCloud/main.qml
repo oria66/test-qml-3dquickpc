@@ -35,34 +35,10 @@ ApplicationWindow {
                 name: "mypointcloud"
                 count: 10000000
             }
-            materials: PrincipledMaterial{}
+            materials: PrincipledMaterial{
+            }
         }
     }
-
-//    View3D {
-//        anchors.fill: parent
-//        camera: camera
-
-//        PerspectiveCamera {
-//            id: camera
-//            position: Qt.vector3d(0, 0, 600)
-//        }
-
-//        DirectionalLight {
-//            position: Qt.vector3d(-500, 500, -100)
-//            color: Qt.rgba(0.4, 0.2, 0.6, 1.0)
-//            ambientColor: Qt.rgba(0.1, 0.1, 0.1, 1.0)
-//        }
-
-//        Model {
-//            scale: Qt.vector3d(100, 100, 100)
-//            geometry: GridGeometry {
-//                horizontalLines: 20
-//                verticalLines: 20
-//            }
-//            materials: [ DefaultMaterial { } ]
-//        }
-//    }
 
     WasdController{
         controlledObject: camera
