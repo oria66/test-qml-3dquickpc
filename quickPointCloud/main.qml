@@ -36,6 +36,7 @@ ApplicationWindow {
                 count: 10000000
             }
             materials: PrincipledMaterial{
+            pointSize: 10
             }
         }
     }
